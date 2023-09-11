@@ -1,0 +1,10 @@
+worker.py
+current_worker.py
+worker.pyc
+copy_files.sh
+dev_rebuild_script.sh
+rebuild_script.sh
+run_debug_submissionDF.sh
+celeryconfig.py
+celeryconfig.pyc
+detailed_result_put.*

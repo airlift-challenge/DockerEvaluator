@@ -1,0 +1,13 @@
+name: r2d
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - psutil==5.7.2
+  #- pytorch==1.6.0
+  - pip==20.2.3
+  - python==3.8
+  #- pip:
+  #    - tensorboard==2.3.0
+  #    - tensorboardx==2.1
