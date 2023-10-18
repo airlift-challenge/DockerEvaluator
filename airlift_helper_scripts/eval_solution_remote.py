@@ -1,4 +1,4 @@
-from afrl.evaluators.utils import doremoteeval
+from airlift.evaluators.utils import doremoteeval
 from solution.mysolution import MySolution
 import click
 

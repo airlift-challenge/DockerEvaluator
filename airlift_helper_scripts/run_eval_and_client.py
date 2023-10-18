@@ -21,15 +21,21 @@ INNER_FOLDER = "flatland-starter-kit"
 def run_eval():
         print("running eval and client")
         run_evaluator()
-        time.sleep(30)
+        #time.sleep(15)
         run_submission()
+        #time.sleep(15)
     
 def run_evaluator():
     subproc_args = ["redis-server", "--daemonize", "yes"]
     eval_subproc = subprocess.Popen(subproc_args)
+    #eval_subproc.wait()
+    #subproc_args = ["export AICROWD_TESTS_FOLDER=/home/aicrowd/tests"]
+    #setExport = subprocess.Popen(subproc_args)
+    #setExport.wait()
+    #subproc_args = ["/home/www/flatland/flatland/evaluators/service.py", "--id", str(submission_id), "--api_key", grader_api_key, "--test_folder", TEST_FOLDER]
     print("running evaluator")
-    subproc_args = ["python3", "/home/airliftuser/airlift-main/afrl/evaluators/service.py", "--test_folder", TEST_FOLDER, "--output_dir", "/home/airliftuser/output_folder/eval/"]
-    eval_subproc = subprocess.Popen(subproc_args, cwd="/home/airliftuser/airlift-main")
+    subproc_args = ["python3", "/home/airliftuser/airlift/airlift/evaluators/service.py", "--test_folder", TEST_FOLDER, "--output_dir", "/home/airliftuser/output_folder/eval/"]
+    eval_subproc = subprocess.Popen(subproc_args, cwd="/home/airliftuser/airlift")
     
 
 def run_submission():

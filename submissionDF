@@ -180,7 +180,7 @@ LABEL repo2docker.version="0+untagged.1988.g67aa6c5.dirty"
 USER ${NB_USER}
 
 # RUN pip install -e ./airlift
-RUN pip install -r ./airlift/afrl/requirements_afrl.txt
+RUN pip install -r ./airlift/requirements_dev.txt
 
 # Make sure that postBuild scripts are marked executable before executing them
 RUN chmod +x postBuild
