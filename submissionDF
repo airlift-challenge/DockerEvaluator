@@ -82,7 +82,7 @@ ENV PATH ${NB_PYTHON_PREFIX}/bin:${CONDA_DIR}/bin:${NPM_DIR}/bin:${PATH}
 COPY /conda/activate-conda.sh /etc/profile.d/activate-conda.sh
 RUN chmod +x /etc/profile.d/activate-conda.sh
 
-COPY /submission_folder/run/input/code_for_eval/environment.yml /tmp/environment_repo2docker.yml
+# COPY /submission_folder/run/input/code_for_eval/environment.yml /tmp/environment_repo2docker.yml
 
 COPY /conda/install-miniforge.bash /tmp/install-miniforge.bash
 RUN chmod +x /tmp/install-miniforge.bash
@@ -147,7 +147,7 @@ rm -rf /var/lib/apt/lists/*
 
 USER ${NB_USER}
 RUN TIMEFORMAT='time: %3R' \
-bash -c 'time mamba env update -p ${NB_PYTHON_PREFIX} -f "/tmp/environment_repo2docker.yml" && \
+bash -c 'time mamba env update -p ${NB_PYTHON_PREFIX} -f "${REPO_DIR}/environment.yml" && \
 time mamba clean --all -f -y && \
 mamba list -p ${NB_PYTHON_PREFIX} \
 '
