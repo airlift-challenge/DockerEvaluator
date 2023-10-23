@@ -82,7 +82,7 @@ ENV PATH ${NB_PYTHON_PREFIX}/bin:${CONDA_DIR}/bin:${NPM_DIR}/bin:${PATH}
 COPY /conda/activate-conda.sh /etc/profile.d/activate-conda.sh
 RUN chmod +x /etc/profile.d/activate-conda.sh
 
-# COPY /submission_folder/run/input/code_for_eval/environment.yml /tmp/environment_repo2docker.yml
+COPY /submission_folder/run/input/code_for_eval/environment.yml /tmp/environment_repo2docker.yml
 
 COPY /conda/install-miniforge.bash /tmp/install-miniforge.bash
 RUN chmod +x /tmp/install-miniforge.bash
