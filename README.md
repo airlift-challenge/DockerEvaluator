@@ -26,3 +26,5 @@ worker.py --solutionfolder fullpathofmysolutionfolder --scenariofolder fullpatho
 After making any changes or updates to the airlift library, you should delete the docker image created by using docker image rm eval, and stop and remove any associated running containers to ensure the image builds with the new code.
 
 Notes: There's no need to install anything except docker, but having a local instance of the airlift environment may speed up development.
+
+Distribution Statement A: Approved for Public Release; Distribution Unlimited: Case Number AFRL-2023-5705, CLEARED on 8 Nov 2023
