@@ -112,7 +112,7 @@ WORKDIR ${REPO_DIR}
 RUN echo ${SUB_FLDR}
 # COPY /airlift-starter-kit/* ${REPO_DIR}/
 COPY /submission_folder/run/input/code_for_eval/ ${REPO_DIR}/
-COPY /airlift/ ${REPO_DIR}/airlift/
+#COPY /airlift/ ${REPO_DIR}/airlift/
 COPY /airlift/ ${REPO_DIR}/airlift-main/
 COPY /airlift_helper_scripts/* ${REPO_DIR}/
 RUN rm -rf ./scenarios
@@ -160,14 +160,6 @@ USER root
 COPY --chown=${NB_USER}:${NB_USER} . ${REPO_DIR}
 #RUN chown -R ${NB_USER}:${NB_USER} ${REPO_DIR}
 
-# Run assemble scripts! These will actually turn the specification
-# in the repository into an image.
-
-
-
-RUN xargs apt-get install < ${REPO_DIR}/apt.txt
-
-
 # Container image Labels!
 # Put these at the end, since we don't want to rebuild everything
 # when these change! Did I mention I hate Dockerfile cache semantics?
@@ -180,12 +172,17 @@ LABEL repo2docker.version="0+untagged.1988.g67aa6c5.dirty"
 USER ${NB_USER}
 
 # RUN pip install -e ./airlift
-RUN pip install -r ./airlift/requirements_dev.txt
+RUN pip install -r ./airlift-main/requirements_dev.txt
 
 # Make sure that postBuild scripts are marked executable before executing them
-RUN chmod +x postBuild
 RUN chmod +x evaluate.sh
+
+USER root
+RUN chown root:root postBuild
+RUN chmod +x postBuild
 RUN ./postBuild
+USER ${NB_USER}
+
 # Add start script
 # Add entrypoint
 # COPY /repo2docker-entrypoint /usr/local/bin/repo2docker-entrypoint
